@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Verification Check BETA</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Verification Check BETA</p>
+        <h1>Phone & Email Intelligence</h1>
+        <p class="lead">No paid API. No hidden provider. Phone validation runs with bundled worldwide numbering metadata; email validation runs local-first and can use your own Supabase function for DNS/MX checks.</p>
+      </div>
+      <div class="hero-card">
+        <span>Coverage</span>
+        <strong><b id="countCountries">245</b> regions</strong>
+        <small>Global phone metadata bundled in app</small>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="panel controls">
+        <div class="module-head">
+          <span id="modeLabel">PHONE CHECK ENGINE</span>
+          <h2>Run a check</h2>
+        </div>
+
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-mode="phone" type="button">Phone number</button>
+          <button class="tab" data-mode="email" type="button">Email address</button>
+        </div>
+
+        <div id="phonePanel" class="form-panel">
+          <label for="countrySelect">Default country for local numbers</label>
+          <select id="countrySelect"></select>
+
+          <label for="phoneInput">Phone number</label>
+          <input id="phoneInput" type="tel" placeholder="+90 532 128 56 76" autocomplete="off" />
+          <p class="hint">+ ile girersen ülke otomatik bulunur. + yoksa seçili ülkeye göre yorumlanır.</p>
+          <button id="phoneCheckBtn" class="primary" type="button">Check phone</button>
+        </div>
+
+        <div id="emailPanel" class="form-panel hidden">
+          <label for="emailInput">Email address</label>
+          <input id="emailInput" type="email" placeholder="client@example.com" autocomplete="off" />
+          <p class="hint">Local syntax, domain typo, role/disposable risk ve isteğe bağlı Supabase DNS/MX kontrolü.</p>
+          <button id="emailCheckBtn" class="primary" type="button">Check email</button>
+        </div>
+      </div>
+
+      <div id="result" class="panel result-panel">
+        <div id="resultEmpty" class="empty">
+          <span>Ready</span>
+          <h2>Sonuç burada görünecek</h2>
+          <p>Beta tasarım premium görünüm içindir; gerçek sonuçlar JSON olarak da alınır.</p>
+        </div>
+
+        <div id="resultContent" class="hidden">
+          <div class="score-row">
+            <div>
+              <span id="riskPill" class="pill neutral">WAITING</span>
+              <h2 id="summary">—</h2>
+              <p id="explanation">—</p>
+            </div>
+            <div class="score"><strong id="scoreValue">0</strong><span>/100</span></div>
+          </div>
+
+          <h3>Details</h3>
+          <div id="detailsGrid" class="details-grid"></div>
+
+          <h3>Checks</h3>
+          <div id="checksList" class="checks-list"></div>
+
+          <h3>Warnings</h3>
+          <ul id="warningsList" class="warnings"></ul>
+
+          <div class="raw-head">
+            <h3>Raw JSON</h3>
+            <button id="copyBtn" type="button">Copy JSON</button>
+          </div>
+          <pre id="rawJson"></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="bundle.js"></script>
+</body>
+</html>
