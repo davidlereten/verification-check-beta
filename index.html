@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#080b12" />
+  <title>Verification Check BETA</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">VERIFICATION CHECK BETA</p>
+        <h1>Phone & Email Check</h1>
+      </div>
+      <div class="live-chip"><span></span> Live local engine</div>
+    </header>
+
+    <section class="workspace">
+      <aside class="panel control-panel">
+        <div class="panel-title">
+          <span>CHECK ENGINE</span>
+          <h2>Run verification</h2>
+        </div>
+
+        <div class="tabs" role="tablist" aria-label="Verification mode">
+          <button class="tab active" data-mode="phone" type="button">Phone</button>
+          <button class="tab" data-mode="email" type="button">Email</button>
+        </div>
+
+        <div id="phonePanel" class="form-panel">
+          <label for="countrySelect">Default country</label>
+          <select id="countrySelect" aria-label="Default country"></select>
+
+          <label for="phoneInput">Phone number</label>
+          <input id="phoneInput" type="tel" placeholder="+90 532 128 56 76" autocomplete="off" autofocus />
+        </div>
+
+        <div id="emailPanel" class="form-panel hidden">
+          <label for="emailInput">Email address</label>
+          <input id="emailInput" type="email" placeholder="client@example.com" autocomplete="off" />
+        </div>
+
+        <div class="mini-status">
+          <span id="miniDot"></span>
+          <strong id="miniStatus">Ready</strong>
+          <small id="miniHint">Type to check instantly.</small>
+        </div>
+      </aside>
+
+      <section id="result" class="panel result-panel" aria-live="polite">
+        <div class="result-head">
+          <div>
+            <span class="section-label">RESULT</span>
+            <h2 id="resultTitle">Waiting for input</h2>
+          </div>
+          <span id="riskPill" class="pill neutral">READY</span>
+        </div>
+
+        <p id="resultSub" class="result-sub">Select phone or email, type a value, and the check will run live.</p>
+
+        <div class="score-strip">
+          <div>
+            <small>Confidence</small>
+            <strong id="scoreValue">0%</strong>
+          </div>
+          <div>
+            <small>Decision</small>
+            <strong id="decisionValue">—</strong>
+          </div>
+          <div>
+            <small>Mode</small>
+            <strong id="modeValue">Phone</strong>
+          </div>
+        </div>
+
+        <div id="signalGrid" class="signal-grid"></div>
+
+        <div class="notes-box">
+          <span>Notes</span>
+          <p id="notesText">No result yet.</p>
+        </div>
+      </section>
+    </section>
+  </main>
+  <script src="bundle.js"></script>
+</body>
+</html>
